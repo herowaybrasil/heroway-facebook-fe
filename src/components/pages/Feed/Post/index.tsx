@@ -6,14 +6,18 @@ import PostContent from './PostContent';
 import PostHeader from './PostHeader';
 import PostSendCommentForm from './PostSendCommentForm';
 
-const Post: React.FC = () => {
+interface IProps {
+  post: any;
+}
+
+const Post: React.FC<IProps> = props => {
   return (
     <div className="post">
-      <PostHeader />
-      <PostContent />
-      <PostAction />
-      <PostComments />
-      <PostSendCommentForm />
+      <PostHeader name={props.post.name} date={props.post.date} image={props.post.image} />
+      <PostContent content={props.post.content} />
+      <PostAction likes={props.post.likes} comments={props.post.comments.length} />
+      <PostComments comments={props.post.comments} />
+      <PostSendCommentForm postId={props.post.id} />
     </div>
   );
 };

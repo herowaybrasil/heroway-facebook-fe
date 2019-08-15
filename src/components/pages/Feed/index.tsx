@@ -24,7 +24,9 @@ class Feed extends React.Component<IProps> {
     return (
       <div className="feed">
         <div className="container">
-          <Post />
+          {this.props.postsState.posts.map((post: any) => {
+            return <Post key={post.id} post={post} />;
+          })}
         </div>
       </div>
     );

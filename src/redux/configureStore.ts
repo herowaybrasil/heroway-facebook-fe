@@ -3,9 +3,11 @@ import * as ReduxDevtools from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import postsReducer from './reducers/posts';
+import sendCommentReducer from './reducers/sendComment';
 
 const rootReducer = Redux.combineReducers({
-  posts: postsReducer
+  posts: postsReducer,
+  sendComment: sendCommentReducer
 });
 
 export type IAppState = ReturnType<typeof rootReducer>;

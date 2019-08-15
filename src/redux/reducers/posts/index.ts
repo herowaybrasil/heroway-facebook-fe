@@ -20,7 +20,7 @@ const reducer: Reducer<IState> = (state = INITIAL_STATE, action): IState => {
       return {
         isFetching: false,
         hasErrors: false,
-        posts: action.payload
+        posts: action.payload.posts
       };
 
     case EActions.HTTP_GET_POSTS_FAIL:
@@ -29,6 +29,22 @@ const reducer: Reducer<IState> = (state = INITIAL_STATE, action): IState => {
         hasErrors: true,
         posts: INITIAL_STATE.posts
       };
+
+    case EActions.UPDATE_POST_COMMENT: {
+      const newPosts = state.posts.map((post: any) => {
+        if (post.id === action.payload.postId) {
+          post.comments.push(action.payload.comment);
+        }
+
+        return post;
+      });
+
+      return {
+        isFetching: false,
+        hasErrors: false,
+        posts: newPosts
+      };
+    }
 
     default:
       return state;
@@ -41,6 +57,7 @@ export const getPosts = () => {
 
     try {
       const url = "https://us-central1-heroway-react-facebook.cloudfunctions.net/app/posts";
+      // const url = "http://localhost:5000/heroway-react-facebook/us-central1/app/posts";
 
       const response = await fetch(url);
       const json = await response.json();

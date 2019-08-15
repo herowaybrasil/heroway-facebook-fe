@@ -1,12 +1,12 @@
-import { ITodo } from '../../models/todo';
-
 /**
  * Actions
  */
 export enum EActions {
-  HTTP_GET_POSTS = "@todos/HTTP_GET_POSTS",
-  HTTP_GET_POSTS_SUCCESS = "@todos/HTTP_GET_POSTS_SUCCESS",
-  HTTP_GET_POSTS_FAIL = "@todos/HTTP_GET_POSTS_FAIL"
+  HTTP_GET_POSTS = "@posts/HTTP_GET_POSTS",
+  HTTP_GET_POSTS_SUCCESS = "@posts/HTTP_GET_POSTS_SUCCESS",
+  HTTP_GET_POSTS_FAIL = "@posts/HTTP_GET_POSTS_FAIL",
+
+  UPDATE_POST_COMMENT = "@posts/UPDATE_POST_COMMENT"
 }
 
 /**
@@ -15,7 +15,7 @@ export enum EActions {
 export interface IState {
   readonly isFetching: boolean;
   readonly hasErrors: boolean;
-  readonly posts: ITodo[];
+  readonly posts: any;
 }
 
 /**

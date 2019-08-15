@@ -1,33 +1,47 @@
 import React from 'react';
+import * as ReactRedux from 'react-redux';
 
 import Person from '../../../../assets/img/person1.jpg';
+import { IAppState } from '../../../../redux/configureStore';
 import Typing from '../Typing';
 
-const ProfileInfo: React.FC = () => {
-  return (
-    <>
-      <div className="profile-image">
-        <Typing />
+interface IProps {
+  sendCommentState: any;
+}
 
-        <div className="image-board">
-          <img src={Person} alt="Profile" />
+class ProfileInfo extends React.Component<IProps> {
+  render() {
+    return (
+      <>
+        <div className="profile-image">
+          {this.props.sendCommentState.typing && <Typing />}
+
+          <div className="image-board">
+            <img src={Person} alt="Profile" />
+          </div>
         </div>
-      </div>
-      <div className="profile-name">
-        <span>Amarilda Curvada</span>
-      </div>
-      <div className="profile-info">
-        <div>
-          <span>347</span>
-          <span>Followers</span>
+        <div className="profile-name">
+          <span>Amarilda Curvada</span>
         </div>
-        <div>
-          <span>94</span>
-          <span>Following</span>
+        <div className="profile-info">
+          <div>
+            <span>347</span>
+            <span>Followers</span>
+          </div>
+          <div>
+            <span>94</span>
+            <span>Following</span>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
+}
+
+const mapStateToProps = (state: IAppState) => {
+  return {
+    sendCommentState: state.sendComment
+  };
 };
 
-export default ProfileInfo;
+export default ReactRedux.connect(mapStateToProps)(ProfileInfo);
