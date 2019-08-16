@@ -13,7 +13,7 @@ body {
 
   box-sizing: border-box;
   background: #EEEEEE;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 @import './assets/css/index.css';
