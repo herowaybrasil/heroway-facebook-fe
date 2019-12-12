@@ -32,7 +32,7 @@
 }
 
 .profile > .profile-image .image-board img {
-    max-width: 200px;
+    width: 100%;
 }
 
 .profile > .profile-info {

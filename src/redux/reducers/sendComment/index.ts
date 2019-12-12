@@ -1,5 +1,6 @@
 import { Dispatch, Reducer } from 'redux';
 
+import { IAppState } from '../../configureStore';
 import { EActions as EPostActions } from '../posts/types';
 import { EActions, IState } from './types';
 
@@ -51,15 +52,22 @@ export const updateCommentTyping = (isTyping: boolean) => {
 };
 
 export const sendComment = (postId: number, comment: string) => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch, getState: any) => {
     dispatch({ type: EActions.HTTP_SEND_COMMENT, payload: null });
 
     try {
+      const state: IAppState = getState();
+
       const url = `https://us-central1-heroway-react-facebook.cloudfunctions.net/app/posts/${postId}/comment`;
       // const url = `http://localhost:5000/heroway-react-facebook/us-central1/app/posts/${postId}/comment`;
+
       const options = {
         method: "POST",
-        body: JSON.stringify({ comment }),
+        body: JSON.stringify({
+          login: state.login.user.login,
+          avatar_url: state.login.user.avatar_url,
+          comment: comment
+        }),
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"

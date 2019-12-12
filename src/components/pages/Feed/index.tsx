@@ -1,12 +1,15 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
+import { Redirect } from 'react-router';
 
 import { IAppState } from '../../../redux/configureStore';
 import { getPosts } from '../../../redux/reducers/posts';
+import ProfileSidebar from '../../layout/ProfileSidebar';
 import Post from './Post';
 
 interface IStateProps {
   postsState: any;
+  loginState: any;
 }
 
 interface IDispatchProps {
@@ -21,21 +24,29 @@ class Feed extends React.Component<IProps> {
   }
 
   render() {
+    if (!this.props.loginState.user.login) {
+      return <Redirect to="/login" />;
+    }
+
     return (
-      <div className="feed">
-        <div className="container">
-          {this.props.postsState.posts.map((post: any) => {
-            return <Post key={post.id} post={post} />;
-          })}
+      <>
+        <div className="feed">
+          <div className="container">
+            {this.props.postsState.posts.map((post: any) => {
+              return <Post key={post.id} post={post} />;
+            })}
+          </div>
         </div>
-      </div>
+        <ProfileSidebar />
+      </>
     );
   }
 }
 
 const mapStateToProps = (state: IAppState) => {
   return {
-    postsState: state.posts
+    postsState: state.posts,
+    loginState: state.login
   };
 };
 

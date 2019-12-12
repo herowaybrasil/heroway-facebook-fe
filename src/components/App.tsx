@@ -3,8 +3,7 @@ import * as ReactRedux from 'react-redux';
 
 import configureStore from '../redux/configureStore';
 import Header from './layout/Header';
-import ProfileSidebar from './layout/ProfileSidebar';
-import Feed from './pages/Feed';
+import Routes from './Routes';
 
 const store = configureStore();
 
@@ -13,8 +12,7 @@ const App: React.FC = () => {
     <ReactRedux.Provider store={store}>
       <section className="main">
         <Header />
-        <Feed />
-        <ProfileSidebar />
+        <Routes />
       </section>
     </ReactRedux.Provider>
   );

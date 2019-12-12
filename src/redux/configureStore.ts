@@ -2,10 +2,12 @@ import * as Redux from 'redux';
 import * as ReduxDevtools from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
+import loginReducer from './reducers/login';
 import postsReducer from './reducers/posts';
 import sendCommentReducer from './reducers/sendComment';
 
 const rootReducer = Redux.combineReducers({
+  login: loginReducer,
   posts: postsReducer,
   sendComment: sendCommentReducer
 });

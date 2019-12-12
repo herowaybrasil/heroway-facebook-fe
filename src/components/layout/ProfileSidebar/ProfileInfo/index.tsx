@@ -1,12 +1,12 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 
-import Person from '../../../../assets/img/person1.jpg';
 import { IAppState } from '../../../../redux/configureStore';
 import Typing from '../Typing';
 
 interface IProps {
   sendCommentState: any;
+  loginState: any;
 }
 
 class ProfileInfo extends React.Component<IProps> {
@@ -17,11 +17,11 @@ class ProfileInfo extends React.Component<IProps> {
           {this.props.sendCommentState.typing && <Typing />}
 
           <div className="image-board">
-            <img src={Person} alt="Profile" />
+            <img src={this.props.loginState.user.avatar_url} alt="Profile" />
           </div>
         </div>
         <div className="profile-name">
-          <span>Amarilda Curvada</span>
+          <span>{this.props.loginState.user.login}</span>
         </div>
         <div className="profile-info">
           <div>
@@ -40,7 +40,8 @@ class ProfileInfo extends React.Component<IProps> {
 
 const mapStateToProps = (state: IAppState) => {
   return {
-    sendCommentState: state.sendComment
+    sendCommentState: state.sendComment,
+    loginState: state.login
   };
 };
 

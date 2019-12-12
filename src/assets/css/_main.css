@@ -2,11 +2,11 @@
     position: relative;
     display: flex;
     margin-top: 50px;
+    min-height: calc(100vh - 50px);
 }
 
 .main > .feed {
     width: calc(100% - 350px);
-    min-height: calc(100vh - 50px);
     background-color: #F5F6FB;
 }
 
@@ -31,7 +31,7 @@
         width: 100%;
         min-width: 299px;
     }
-    
+
     .main > .feed > .container {
         width: 90%;
     }
@@ -45,7 +45,7 @@
     .main > .feed {
         width: 100%;
     }
-    
+
     .main > .feed > .container {
         width: 90%;
     }
@@ -55,12 +55,12 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) { 
+@media (min-width: 768px) and (max-width: 991.98px) {
 
     .main > .feed {
         width: calc(100% - 280px);
     }
-    
+
     .main > .feed > .container {
         width: 90%;
     }
