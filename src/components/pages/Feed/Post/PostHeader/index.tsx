@@ -14,7 +14,7 @@ const PostHeader: React.FC<IProps> = props => {
           <img src={props.image} alt="Profile" />
         </div>
       </div>
-      <div className="post-header-pofile-name">
+      <div className="post-header-profile-name">
         <div className="profile-name">{props.name}</div>
         <div className="post-date">{props.date}</div>
       </div>

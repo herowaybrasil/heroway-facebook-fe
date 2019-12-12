@@ -1,3 +1,5 @@
+import './styles.css';
+
 import React from 'react';
 
 import { ReactComponent as FacebookLogo } from '../../../assets/img/facebook-logo.svg';

@@ -22,7 +22,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="login-component">
+    <div className="login">
       <div className="login-box">
         <GithubLogo className="github-logo" />
 

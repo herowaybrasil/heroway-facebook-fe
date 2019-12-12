@@ -1,3 +1,5 @@
+import './styles.css';
+
 import React from 'react';
 
 import PostAction from './PostAction';
@@ -23,3 +25,4 @@ const Post: React.FC<IProps> = props => {
 };
 
 export default Post;
+
