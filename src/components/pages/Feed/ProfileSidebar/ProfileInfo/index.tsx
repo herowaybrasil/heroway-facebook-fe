@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 
-import { IAppState } from '../../../../redux/configureStore';
+import { IAppState } from '../../../../../redux/configureStore';
 import Typing from '../Typing';
 
 interface IProps {

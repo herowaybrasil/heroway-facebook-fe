@@ -4,8 +4,8 @@ import { Redirect } from 'react-router';
 
 import { IAppState } from '../../../redux/configureStore';
 import { getPosts } from '../../../redux/reducers/posts';
-import ProfileSidebar from '../../layout/ProfileSidebar';
 import Post from './Post';
+import ProfileSidebar from './ProfileSidebar';
 
 interface IStateProps {
   postsState: any;
