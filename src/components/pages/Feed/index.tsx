@@ -24,7 +24,7 @@ class Feed extends React.Component<IProps> {
   }
 
   render() {
-    if (!this.props.loginState.user.login) {
+    if (!this.props.loginState.user) {
       return <Redirect to="/login" />;
     }
 

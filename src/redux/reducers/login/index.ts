@@ -6,7 +6,7 @@ const INITIAL_STATE: IState = {
   isFetching: false,
   hasErrors: false,
   message: "",
-  user: {}
+  user: null
 };
 const reducer: Reducer<IState> = (state = INITIAL_STATE, action): IState => {
   switch (action.type) {

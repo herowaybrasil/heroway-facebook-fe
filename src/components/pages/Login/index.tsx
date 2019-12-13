@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     dispatch(getGithubUser(email));
   }
 
-  if (loginState.user.login) {
+  if (loginState.user) {
     return <Redirect to="/feed" />;
   }
 
@@ -26,6 +26,7 @@ const Login: React.FC = () => {
       <div className="login-box">
         <GithubLogo className="github-logo" />
 
+        <span>{loginState.message}</span>
         <input
           className="github-input"
           type="text"
