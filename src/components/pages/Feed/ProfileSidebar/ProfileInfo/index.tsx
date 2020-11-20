@@ -1,20 +1,31 @@
-import React from 'react';
+import React from "react";
+import * as ReactRedux from "react-redux";
 
-import Person from '../../../../../assets/img/person1.jpg';
-import Typing from '../Typing';
+import Person from "../../../../../assets/img/person1.jpg";
+import { IReducers } from "../../../../../redux/configureStore";
+import { IUser } from "../../../../../redux/reducers/github";
+import Typing from "../Typing";
 
-const ProfileInfo: React.FC = () => {
+interface IProfileInfo {
+  user: IUser;
+}
+
+const ProfileInfo = (props: IProfileInfo) => {
+  const commentsState = ReactRedux.useSelector((reducers: IReducers) => {
+    return reducers.comments;
+  });
+
   return (
     <>
       <div className="profile-image">
-        <Typing />
+        {commentsState.typing && <Typing />}
 
         <div className="image-board">
-          <img src={Person} alt="Profile" />
+          <img src={props.user.avatar_url} alt="Profile" />
         </div>
       </div>
       <div className="profile-name">
-        <span>Amarilda Curvada</span>
+        <span>{props.user.login}</span>
       </div>
       <div className="profile-info">
         <div>

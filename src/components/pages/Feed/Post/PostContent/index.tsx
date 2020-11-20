@@ -1,18 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import PostImage from '../../../../../assets/img/post-image.jpg';
+import PostImage from "../../../../../assets/img/post-image.jpg";
+import { IPost } from "../../../../../redux/reducers/posts";
 
-const PostContent: React.FC = () => {
+interface IPostContent {
+  content: IPost["content"];
+  image: IPost["postImage"];
+}
+
+const PostContent = (props: IPostContent) => {
   return (
     <>
-      <div className="post-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis
-        condimentum. Maecenas malesuada, mi id tempus consequat, ex nunc rhoncus arcu, at vehicula
-        lorem mi eu magna.
-      </div>
+      <div className="post-content">{props.content}</div>
       <div className="post-image">
         <div className="post-image-board">
-          <img src={PostImage} alt="Profile" />
+          <img src={props.image} alt="A imagem do post" title="A imagem do post" />
         </div>
       </div>
     </>

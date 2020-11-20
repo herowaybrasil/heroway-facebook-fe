@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import { IUser } from "../../../../redux/reducers/github";
 
-import ProfileInfo from './ProfileInfo';
+import ProfileInfo from "./ProfileInfo";
 
-const ProfileSidebar: React.FC = () => {
+interface IProfileSidebar {
+  user: IUser;
+}
+
+const ProfileSidebar = (props: IProfileSidebar) => {
   return (
     <div className="profile">
-      <ProfileInfo />
+      <ProfileInfo user={props.user} />
     </div>
   );
 };

@@ -1,15 +1,23 @@
-import React from 'react';
+import React from "react";
+import * as ReactRedux from "react-redux";
 
-import Header from './layout/Header';
-import Feed from './pages/Feed';
+import Header from "./layout/Header";
+
+import configureStore from "../redux/configureStore";
+import Routes from "./Routes";
+
+const store = configureStore();
 
 const App: React.FC = () => {
+  const ReactReduxProvider = ReactRedux.Provider;
+
   return (
-    <section className="main">
-      <Header />
-      {/* <Login /> */}
-      <Feed />
-    </section>
+    <ReactReduxProvider store={store}>
+      <section className="main">
+        <Header />
+        <Routes />
+      </section>
+    </ReactReduxProvider>
   );
 };
 

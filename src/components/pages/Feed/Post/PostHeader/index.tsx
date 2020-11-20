@@ -1,18 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import Person from '../../../../../assets/img/person2.jpg';
+import Person from "../../../../../assets/img/person2.jpg";
+import { IPost } from "../../../../../redux/reducers/posts";
 
-const PostHeader: React.FC = () => {
+interface IPostHeader {
+  image: IPost["image"];
+  name: IPost["name"];
+  date: IPost["date"];
+}
+
+const PostHeader = (props: IPostHeader) => {
   return (
     <div className="post-header">
       <div className="post-header-profile-image">
         <div className="post-header-image-board">
-          <img src={Person} alt="Profile" />
+          <img src={props.image} alt={`Usuário ${props.name}`} title={`Usuário ${props.name}`} />
         </div>
       </div>
       <div className="post-header-profile-name">
-        <div className="profile-name">João da Silva</div>
-        <div className="post-date">Feb 17 at 10:45PM</div>
+        <div className="profile-name">{props.name}</div>
+        <div className="post-date">{props.date}</div>
       </div>
     </div>
   );

@@ -1,24 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import Person from '../../../../../assets/img/person3.jpg';
+import Person from "../../../../../assets/img/person3.jpg";
+import { IPost } from "../../../../../redux/reducers/posts";
 
-const PostComments: React.FC = () => {
+interface IPostComments {
+  comments: IPost["comments"];
+}
+
+const PostComments = (props: IPostComments) => {
   return (
     <div className="post-comments">
-      <div className="comment">
-        <div className="comment-profile-image">
-          <div className="comment-image-board">
-            <img src={Person} alt="Profile" />
+      {props.comments.map((comment) => {
+        return (
+          <div key={`${comment.name}-${comment.comment}`} className="comment">
+            <div className="comment-profile-image">
+              <div className="comment-image-board">
+                <img src={comment.image} alt={comment.name} title={comment.name} />
+              </div>
+            </div>
+            <div className="comment-content">
+              <div className="comment-profile-name">{comment.name}</div>
+              <div className="comment-text">{comment.comment}</div>
+            </div>
           </div>
-        </div>
-        <div className="comment-content">
-          <div className="comment-profile-name">Fugiro Nakwonby</div>
-          <div className="comment-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis
-            condimentum
-          </div>
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 };
