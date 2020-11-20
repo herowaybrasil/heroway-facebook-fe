@@ -1,5 +1,5 @@
 import React from "react";
-import postsReducer, { IPost } from "../../../../redux/reducers/posts";
+import { IPost } from "../../../../redux/reducers/posts";
 
 import PostAction from "./PostAction";
 import PostComments from "./PostComments";

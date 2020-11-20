@@ -1,25 +1,7 @@
 import { IReducers } from "../../configureStore";
 import { updatePostComment } from "../posts";
+import { ICommentsInitialState, INITIAL_STATE, SEND_COMMENT_FAIL, SEND_COMMENT_LOADING, SEND_COMMENT_SUCCESS, TYPING } from "./helpers";
 
-const TYPING = '@comments/TYPING';
-
-const SEND_COMMENT_LOADING = '@comments/SEND_COMMENT_LOADING';
-const SEND_COMMENT_SUCCESS = '@comments/SEND_COMMENT_SUCCESS';
-const SEND_COMMENT_FAIL = '@comments/SEND_COMMENT_ERROR';
-
-interface ICommentsInitialState {
-  typing: boolean;
-  text: string;
-  loading: boolean;
-  error: boolean;
-}
-
-const INITIAL_STATE: ICommentsInitialState = {
-  typing: false,
-  text: '',
-  loading: false,
-  error: false,
-}
 export default function commentsReducer(state = INITIAL_STATE, action: any): ICommentsInitialState {
   switch (action.type) {
     case TYPING:
@@ -81,9 +63,6 @@ export function sendComment(postId: string, comment: string) {
       const response = await fetch(url, options);
       const json = await response.json();
 
-      console.log(json);
-
-      debugger;
       dispatch({ type: SEND_COMMENT_SUCCESS, json: json });
       dispatch(updatePostComment(postId, commentBody));
     } catch (e) {

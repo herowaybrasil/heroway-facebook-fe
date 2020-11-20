@@ -1,7 +1,6 @@
 import React from "react";
 import * as ReactRedux from "react-redux";
 
-import Person from "../../../../../assets/img/person1.jpg";
 import { IReducers } from "../../../../../redux/configureStore";
 import { IUser } from "../../../../../redux/reducers/github";
 import Typing from "../Typing";

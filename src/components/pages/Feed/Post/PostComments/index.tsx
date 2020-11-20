@@ -1,6 +1,5 @@
 import React from "react";
 
-import Person from "../../../../../assets/img/person3.jpg";
 import { IPost } from "../../../../../redux/reducers/posts";
 
 interface IPostComments {

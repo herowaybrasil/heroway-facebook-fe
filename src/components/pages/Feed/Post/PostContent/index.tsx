@@ -1,6 +1,5 @@
 import React from "react";
 
-import PostImage from "../../../../../assets/img/post-image.jpg";
 import { IPost } from "../../../../../redux/reducers/posts";
 
 interface IPostContent {
